@@ -1,0 +1,23 @@
+# Visual Studio / VS Code
+.vs/
+.vscode/
+*.suo
+*.user
+
+# Build outputs
+[Bb]in/
+[Oo]bj/
+*.dll
+
+# Logs
+*.log
+
+# Temporary scratch files (compare_dumps.ps1 결과 등)
+scratch/
+
+# Decompiled sources (전부 로컬 전용 참조 자료입니다 - 필요하면 각자 덤프해서 봅니다)
+Decompiled/
+reference/
+
+# 사용자별 Claude Code 권한 설정(개인 로컬 파일)
+.claude/settings.local.json

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- 1편(MelonLoader 0.7.3) 기준입니다. 2편에 맞는 MelonLoader가 다른 런타임을 쓰면
+         MelonLoader/ 아래 폴더 이름(net6, net8 등)을 보고 같이 고치십시오. -->
+    <TargetFramework>net6.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <RootNamespace>muse_dash_2_test</RootNamespace>
+    <AssemblyName>muse-dash-2-custom-chart</AssemblyName>
+    <Deterministic>true</Deterministic>
+    <LangVersion>11.0</LangVersion>
+  </PropertyGroup>
+
+  <!-- 게임 경로 (기본값: H:\muse dash 2 hwa, 출시 후 실제 작업용 사본 경로로 확정) -->
+  <PropertyGroup>
+    <GamePath Condition="'$(GamePath)' == ''">H:\muse dash 2 hwa</GamePath>
+    <ModsDir>$(GamePath)\Mods</ModsDir>
+  </PropertyGroup>
+
+  <!-- 개별 DLL을 나열하는 대신 폴더 전체를 와일드카드로 참조 -->
+  <ItemGroup>
+    <Reference Include="$(GamePath)\MelonLoader\net6\*.dll" Private="false" />
+    <Reference Include="$(GamePath)\MelonLoader\Il2CppAssemblies\*.dll" Private="false" />
+  </ItemGroup>
+
+  <!-- 빌드 후 산출 DLL을 게임 Mods 폴더로 자동 배포합니다.
+       다른 게임 경로로 컴파일만 확인할 때는 -p:SkipDeploy=true 를 주십시오(1편 Mods에 2편 DLL이 들어가는 것 방지). -->
+  <Target Name="DeployToMods" AfterTargets="Build" Condition="'$(SkipDeploy)' != 'true'">
+    <MakeDir Directories="$(ModsDir)" Condition="!Exists('$(ModsDir)')" />
+    <Copy SourceFiles="$(TargetPath)"
+          DestinationFolder="$(ModsDir)"
+          OverwriteReadOnlyFiles="true"
+          ContinueOnError="WarnAndContinue">
+      <Output TaskParameter="CopiedFiles" ItemName="DeployedFiles" />
+    </Copy>
+    <Message Condition="'@(DeployedFiles)' != ''" Importance="high" Text="================================================================================" />
+    <Message Condition="'@(DeployedFiles)' != ''" Importance="high" Text="[AutoDeploy] Successfully deployed '$(TargetFileName)' -> '$(ModsDir)'" />
+    <Message Condition="'@(DeployedFiles)' != ''" Importance="high" Text="================================================================================" />
+    <Warning Condition="'@(DeployedFiles)' == ''" Text="[AutoDeploy] 배포 실패: '$(TargetFileName)'을(를) '$(ModsDir)'에 복사하지 못했습니다. 게임이 이 DLL을 잡고 있지 않은지, 폴더 쓰기 권한이 있는지 확인하세요." />
+  </Target>
+</Project>
