@@ -7,6 +7,7 @@
 - 1편 훅 전체 목록·MD2 이름 채울 칸: [MD2_TAG_RETARGET_MAP.md](../../muse%20dash%20test/docs/muse-dash-2/MD2_TAG_RETARGET_MAP.md) (맨 아래 "🗂️ 1편 훅 전체 목록")
 - 분석 순서·3대 핵심 질문·Phase 0~9: [MUSE_DASH_2_SPECULATIVE_GUIDE.md](../../muse%20dash%20test/docs/muse-dash-2/MUSE_DASH_2_SPECULATIVE_GUIDE.md)
 - 1편 사고 기반 체크리스트: [CHECKLIST.md](../../muse%20dash%20test/docs/guides/CHECKLIST.md)
+- **빠르게 결정·구현·확인하는 법**(보고서 읽기, 결정표, CallProbe 루프, 기능별 확인 신호): [MD2_PLAYBOOK.md](MD2_PLAYBOOK.md)
 
 확인한 사실은 맨 아래 **실측 기록** 표에 적고, 끝나면 [AGENTS.md](../AGENTS.md)의 "미확정" 칸을 채웁니다.
 
@@ -18,6 +19,10 @@
       1편 저장소의 `Decompiled/`는 예전 덤퍼 출력이라 그대로 비교하면 `params Int32[]`↔`int[]` 같은 잡음이 섞입니다.
       지금 덤퍼로 새로 떠 두었고, `compare_dumps.ps1`의 기본 비교 기준입니다.
 - [x] 탐색 도구 이식·빌드 확인(SignatureDumper, `scripts/`), 모드 뼈대 컴파일 확인(1편 어셈블리로 `-p:SkipDeploy=true` 빌드).
+- [x] **1편 훅·API 목록 추출** → `docs/md1-retarget/`(훅 167건, 게임 API 참조 425건, 패치 클래스→파일 125개, 1편 v0.11.1 배포 DLL 기준).
+      1편 6.7.0에 되돌려 대조해 전부 "그대로", 일부러 망가뜨린 목록으로 6가지 상태를 모두 잡는지 확인(2026-10-27).
+      **1편 모드를 출시 전에 더 고치면** 플레이북 7장 명령으로 다시 뽑습니다.
+- [x] CallProbe를 1편 6.7.0에서 실행 확인(와일드카드·호출 순서·씬 요약). 인자 값 기록은 미확인.
 - [ ] **스토어 페이지에서 App ID 확인.** 출시 후 `H:\steam\steamapps\appmanifest_<AppID>.acf`를 찾는 열쇠입니다.
 - [ ] **1편 세이브·설정 백업.** 2편이 1편 세이브를 읽어 연동 보상을 주는 구조일 수 있습니다. 2편을 켜기 전에 1편 쪽을 먼저 떠 둡니다.
 - [ ] **1편 보존 작업 마감 점검.** 2편 출시 뒤 1편 서비스·콜라보가 줄어들 위험이 있습니다(전역 메모리 "Abandonware 보존 프로젝트").
@@ -71,6 +76,14 @@
 - [ ] **1편과 비교**: `scripts/compare_dumps.ps1 -Detail` → `scratch/dump_diff.txt`.
       어셈블리 이름이 바뀌었으면 `-IgnoreAssembly`(같은 이름의 타입이 여러 어셈블리에 있으면 겹친다는 한계가 있음).
       "사라진 타입"에 1편 훅 대상이 있으면 그 기능이 제일 먼저 재분석 대상입니다.
+- [ ] **재타깃팅 보고서**(이게 첫날 할 일 목록이 됩니다):
+  ```bash
+  dotnet build RetargetScanner/RetargetScanner.csproj
+  ```
+  ```bash
+  "RetargetScanner/bin/Debug/net8.0/RetargetScanner.exe" check docs/md1-retarget "H:\muse dash 2 hwa\MelonLoader\Il2CppAssemblies" scratch/retarget-report.md
+  ```
+  요약 표 숫자를 아래 실측 기록에 옮기고, 읽는 법은 [플레이북 2장](MD2_PLAYBOOK.md#2-재타깃팅-보고서-읽는-법).
 - [ ] 본문이 필요해지면 Cpp2IL ISIL(1편 방식, 약 30초):
   ```bash
   "H:\muse dash 2 hwa\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Cpp2IL\Cpp2IL.exe" --game-path "H:/muse dash 2 hwa" --output-as isil --output-to "H:/source/repos/muse dash 2 test/scratch/isil"
@@ -82,8 +95,9 @@
 - [ ] `ls -la "H:/muse dash 2 hwa/Mods/"`에 `muse-dash-2-custom-chart.dll`이 있고 시각이 방금인지.
 - [ ] 게임 실행 → 로그에 다음 세 줄:
   - `뮤즈대시 2 모드 v0.0.1이(가) 로드되었습니다.`
-  - `[PatchInstaller] 패치 클래스 0개를 적용했습니다.`
+  - `[PatchInstaller] 패치 클래스 0개를 적용했습니다.` (`CallProbe.txt`에 대상을 적었으면 1개)
   - `[PatchHealth] 패치 대상 0개 전부 정상 해석되었습니다.`
+  - 첫 실행 때 `[CallProbe] 설정 파일 견본을 만들었습니다` → `UserData/CallProbe.txt` 생김
 - [ ] 타이틀 → 곡 선택 → 한 곡 플레이 → 종료까지 크래시 없음(모드가 아무것도 안 하는 상태의 기준선).
 - [ ] **여기까지 되면** AGENTS.md 1·2·6번을 실측값으로 채웁니다.
 
@@ -92,6 +106,7 @@
 ## 6. D+1 ~ : 1편 기능 이식 순서
 
 원칙: 기능 하나를 옮길 때마다 1편 훅 목록 표의 **MD2 이름** 칸을 채우고, 게임에서 확인한 뒤 다음으로 갑니다.
+기능마다 도는 루프(찾기 → CallProbe 관찰 → 구현 → 확인)와 "됐다"의 기준은 [플레이북 4·6장](MD2_PLAYBOOK.md#4-기능-하나를-옮기는-루프). 기능당 상한 2시간, 넘기면 보류하고 다음 기능으로.
 
 1. [ ] **안전판 먼저 — 세이브 정화와 서버 전송 차단.** 커스텀 곡을 **한 번이라도 플레이하기 전에** 합니다.
        가짜 UID 기록이 순정 세이브에 들어가면 되돌리기 어렵고, 기록이 랭킹 서버로 올라가면 다른 플레이어에게 영향이 갑니다.
@@ -137,3 +152,4 @@
 | 안티치트 / 서버 검증 범위 | | |
 | 세이브 위치 | | |
 | 1편 대비 사라진 / 새 타입 수 | | |
+| 재타깃팅: 훅 그대로 / 전체, API 문제 수 | | |

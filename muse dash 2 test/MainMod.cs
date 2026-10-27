@@ -26,5 +26,11 @@ namespace muse_dash_2_test
             // 게임 업데이트로 깨진 패치 대상이 있는지 시작 시 점검하여 요약 로그로 표시합니다.
             PatchHealthCheck.Run();
         }
+
+        public override void OnSceneWasLoaded(int buildIndex, string sceneName)
+        {
+            ModLogger.Msg($"[Scene] 로드: {sceneName} (#{buildIndex})");
+            CallProbe.FlushSummary($"{sceneName} 로드 직전까지");
+        }
     }
 }

@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <!-- Il2CppInterop 어셈블리(net6)를 읽어야 하므로 SignatureDumper와 같이 net8.0으로 돌립니다. -->
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>RetargetScanner</RootNamespace>
+    <AssemblyName>RetargetScanner</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+</Project>

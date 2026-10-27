@@ -1,0 +1,426 @@
+Assembly	Type	Member	Kind
+Assembly-CSharp	Il2Cpp.AlbumTagToggle		type
+Assembly-CSharp	Il2Cpp.AlbumTagToggle	get_m_IconImg	method
+Assembly-CSharp	Il2Cpp.AlbumTagToggle	get_tagInfo	method
+Assembly-CSharp	Il2Cpp.BaseSpineObjectController		type
+Assembly-CSharp	Il2Cpp.Boss		type
+Assembly-CSharp	Il2Cpp.Boss	get_BossHasEntered	method
+Assembly-CSharp	Il2Cpp.Boss	get_curBossIsIn	method
+Assembly-CSharp	Il2Cpp.Boss	get_m_BossObjects	method
+Assembly-CSharp	Il2Cpp.Boss	get_m_CurBossIndex	method
+Assembly-CSharp	Il2Cpp.Boss	get_m_CurBossObject	method
+Assembly-CSharp	Il2Cpp.Boss	get_m_DisappearBoss	method
+Assembly-CSharp	Il2Cpp.Boss	InitBossObject	method
+Assembly-CSharp	Il2Cpp.Boss	Play	method
+Assembly-CSharp	Il2Cpp.ChangeHealthValue		type
+Assembly-CSharp	Il2Cpp.ChangeHealthValue	get_text	method
+Assembly-CSharp	Il2Cpp.ChangeScoreValue		type
+Assembly-CSharp	Il2Cpp.ChangeScoreValue	get_arkNightText	method
+Assembly-CSharp	Il2Cpp.ChangeScoreValue	get_djmaxText	method
+Assembly-CSharp	Il2Cpp.ChangeScoreValue	get_text	method
+Assembly-CSharp	Il2Cpp.DiscordManager		type
+Assembly-CSharp	Il2Cpp.DiscordManager	SetUpdateActivity	method
+Assembly-CSharp	Il2Cpp.LongSongNameController		type
+Assembly-CSharp	Il2Cpp.LongSongNameController	get_m_MidSimpleName	method
+Assembly-CSharp	Il2Cpp.LongSongNameController	get_m_TxtBackupName	method
+Assembly-CSharp	Il2Cpp.LongSongNameController	get_m_TxtSimpleName	method
+Assembly-CSharp	Il2Cpp.LongSongNameController	RefreshText	method
+Assembly-CSharp	Il2Cpp.MusicButtonAreaTitle		type
+Assembly-CSharp	Il2Cpp.MusicStageCell		type
+Assembly-CSharp	Il2Cpp.MusicStageCell	get_m_StageImg	method
+Assembly-CSharp	Il2Cpp.MusicStageCell+MusicStageCellInfo		type
+Assembly-CSharp	Il2Cpp.MusicStageCell+MusicStageCellInfo	get_musicUid	method
+Assembly-CSharp	Il2Cpp.MusicTagManager		type
+Assembly-CSharp	Il2Cpp.OptionSelect		type
+Assembly-CSharp	Il2Cpp.PnlInputMobile		type
+Assembly-CSharp	Il2Cpp.PnlInputMobile	get_m_IsAutoFever	method
+Assembly-CSharp	Il2Cpp.PnlInputMobile	get_m_IsLeftRight	method
+Assembly-CSharp	Il2Cpp.PnlInputMobile	get_m_IsTouchReverse	method
+Assembly-CSharp	Il2Cpp.PnlMusicTagViewItem		type
+Assembly-CSharp	Il2Cpp.PnlMusicTagViewItem	get_m_Cell	method
+Assembly-CSharp	Il2Cpp.PnlPreparation		type
+Assembly-CSharp	Il2Cpp.PnlPreparation	get_btnDownloadReport	method
+Assembly-CSharp	Il2Cpp.PnlPreparation	get_stageAchievementValue	method
+Assembly-CSharp	Il2Cpp.PnlRecord		type
+Assembly-CSharp	Il2Cpp.PnlRecord	get_imgIconFc	method
+Assembly-CSharp	Il2Cpp.PnlRecord	get_txtAccuracy	method
+Assembly-CSharp	Il2Cpp.PnlRecord	get_txtClear	method
+Assembly-CSharp	Il2Cpp.PnlRecord	get_txtCombo	method
+Assembly-CSharp	Il2Cpp.PnlRecord	get_txtScore	method
+Assembly-CSharp	Il2Cpp.PnlVictory		type
+Assembly-CSharp	Il2Cpp.SavedSongResult		type
+Assembly-CSharp	Il2Cpp.SavedSongResult	get_uid	method
+Assembly-CSharp	Il2Cpp.SceneChangeController		type
+Assembly-CSharp	Il2Cpp.SceneChangeController	get_curScene	method
+Assembly-CSharp	Il2Cpp.SetSelectedMusicNameTxt		type
+Assembly-CSharp	Il2Cpp.SetSelectedMusicNameTxt	get_isMusicAuthor	method
+Assembly-CSharp	Il2Cpp.SetSelectedMusicNameTxt	get_isMusicName	method
+Assembly-CSharp	Il2Cpp.SetSelectedMusicNameTxt	get_m_LongCtrl	method
+Assembly-CSharp	Il2Cpp.SetSelectedMusicNameTxt	get_txt	method
+Assembly-CSharp	Il2Cpp.SkeletActionData		type
+Assembly-CSharp	Il2Cpp.SkeletActionData	get_actionEventIdx	method
+Assembly-CSharp	Il2Cpp.SkeletActionData	get_actionIdx	method
+Assembly-CSharp	Il2Cpp.SkeletActionData	get_isEndLoop	method
+Assembly-CSharp	Il2Cpp.SkeletActionData	get_isIgnoreAnimationClip	method
+Assembly-CSharp	Il2Cpp.SkeletActionData	get_isRandomSequence	method
+Assembly-CSharp	Il2Cpp.SkeletActionData	get_isSelfProtect	method
+Assembly-CSharp	Il2Cpp.SkeletActionData	get_name	method
+Assembly-CSharp	Il2Cpp.SkeletActionData	get_protectLevel	method
+Assembly-CSharp	Il2Cpp.SkeletActionData	get_spineActionKeyIndex	method
+Assembly-CSharp	Il2Cpp.SpineActionController		type
+Assembly-CSharp	Il2Cpp.SpineActionController	ForceUpdateSkAnim	method
+Assembly-CSharp	Il2Cpp.SpineActionController	get_actionData	method
+Assembly-CSharp	Il2Cpp.SpineActionController	get_currentAnimationName	method
+Assembly-CSharp	Il2Cpp.SpineActionController	get_m_MusicData	method
+Assembly-CSharp	Il2Cpp.SpineActionController	get_skeletonAnimation	method
+Assembly-CSharp	Il2Cpp.SpineActionController	set_currentAnimationTime	method
+Assembly-CSharp	Il2Cpp.SteamManager		type
+Assembly-CSharp	Il2Cpp.SteamManager	set_m_DoSomething1	method
+Assembly-CSharp	Il2Cpp.SteamManager	set_m_DoSomething3	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.AlbumDisplayMusic		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.AlbumDisplayMusic	.ctor	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.AlbumDisplayMusic	AddRangeMusicUid	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.BaseDBConfigObject		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.BaseDBConfigObject	get_count	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DataClass.AlbumTagInfo		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DataClass.AlbumTagInfo	.ctor	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DataClass.AlbumTagInfo	get_albumsInfos	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DataClass.AlbumTagInfo	get_tagUid	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DataClass.AlbumTagInfo	InitCustomTagInfo	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DataClass.AlbumTagInfo	set_iconName	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DataClass.AlbumTagInfo	set_m_AlbumsInfos	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DataClass.AlbumTagInfo	set_m_DisplayMusicUids	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DataClass.AlbumTagInfo	set_m_MusicUids	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DataClass.AlbumTagInfo	set_name	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DataClass.AlbumTagInfo	set_tagUid	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DataClass.AlbumTagInfo	SetTagUids	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DataHelper		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DataHelper	get_offset	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBBattleStage		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBBattleStage	get_selectedDifficulty	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigAlbums		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigAlbums	get_m_Items	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigAlbums	GetAlbumsInfoByUid	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigAlbums	set_m_MaxAlbumUid	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigAlbums+AlbumsInfo		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigAlbums+AlbumsInfo	.ctor	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigAlbums+AlbumsInfo	get_title	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigAlbums+AlbumsInfo	get_uid	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigCustomTags		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigCustomTags+CustomTagInfo		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigCustomTags+CustomTagInfo	.ctor	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigCustomTags+CustomTagInfo	set_music_list	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigCustomTags+CustomTagInfo	set_tag_name	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigCustomTags+CustomTagInfo	set_tag_picture	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigDlcUIExtension		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigDlcUIExtension	get_list	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigDlcUIExtension	GetDlcUIExtensionByJsonIndex	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigHideMusic		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigHideMusic	get_m_Items	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigLocalALBUM		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigLocalAlbums		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag	AddAlbumTagData	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag	AddCustomAlbumTagsSort	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag	AllAlbumTagsSortContains	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag	get_m_AllMusicInfo	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag	get_m_CurSelectedTagIndex	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag	get_stageShowMusicList	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag	GetAlbumTagInfo	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag	GetMusicInfoFromAll	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBSkill		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBStageInfo		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBStageInfo	get__musicList_k__BackingField	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBStageInfo	get_musicList	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBStageInfo	get_oriMusicList	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DlcUIExtensionInfo		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DlcUIExtensionInfo	get_dlcEndTime	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DlcUIExtensionInfo	get_jsonIndex	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.GlobalDataBase		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.GlobalDataBase	get_dbMusicTag	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.GlobalDataBase	get_s_DbBattleStage	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.GlobalDataBase	get_s_StageInfo	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.HideMusicInfo		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.HideMusicInfo	get_diffIndex	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.HideMusicInfo	get_invokeType	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.HideMusicInfo	get_musicUid	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.LocalALBUMInfo		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.LocalALBUMInfo	.ctor	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.LocalALBUMInfo	set_author	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.LocalALBUMInfo	set_name	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.MusicInfo		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.MusicInfo	get_albumJsonName	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.MusicInfo	get_albumUidName	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.MusicInfo	get_author	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.MusicInfo	get_cover	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.MusicInfo	get_difficulty1	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.MusicInfo	get_difficulty2	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.MusicInfo	get_difficulty3	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.MusicInfo	get_difficulty4	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.MusicInfo	get_difficulty5	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.MusicInfo	get_levelDesigner	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.MusicInfo	get_name	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.MusicInfo	get_uid	method
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.Controller.Configs.StandloneCtrlConfig		type
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.Controller.StandloneController		type
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.HostComponent.TaskStageTarget		type
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.HostComponent.TaskStageTarget	get_m_CoolResult	method
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.HostComponent.TaskStageTarget	get_m_EnergyCount	method
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.HostComponent.TaskStageTarget	get_m_GreatResult	method
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.HostComponent.TaskStageTarget	get_m_HitCount	method
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.HostComponent.TaskStageTarget	get_m_LongPressCount	method
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.HostComponent.TaskStageTarget	get_m_LongPressHitCount	method
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.HostComponent.TaskStageTarget	get_m_MissResult	method
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.HostComponent.TaskStageTarget	get_m_MusicCount	method
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.HostComponent.TaskStageTarget	get_m_PerfectResult	method
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.HostComponent.TaskStageTarget	GetAccuracy	method
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.HostComponent.TaskStageTarget	GetTrueAccuracy	method
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.HostComponent.TaskStageTarget	GetTrueAccuracyNew	method
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.HostComponent.TaskStageTarget	IsFullCombo	method
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.Managers.AbstractFeverManager		type
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.Managers.NoteDataMananger		type
+Assembly-CSharp	Il2CppAssets.Scripts.GameCore.Managers.NoteDataMananger	GetNoteByUid	method
+Assembly-CSharp	Il2CppAssets.Scripts.Helpers.VersionHelper		type
+Assembly-CSharp	Il2CppAssets.Scripts.Helpers.VersionHelper	set_s_NeedUpdateValue	method
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Commons.HideCursor		type
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Commons.Singleton`1		type
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Commons.SingletonScriptableObject`1		type
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Managers.AudioManager		type
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Managers.AudioManager	get_bgm	method
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Managers.ConfigManager		type
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Managers.ConfigManager	GetConfigObject	method
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Managers.InputManager		type
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Nice.Datas.DataManager		type
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Nice.Datas.DataManager	get_datas	method
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Nice.Datas.DataManager	get_Item	method
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Nice.Datas.DataObject		type
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Nice.Datas.DataObject	get_Item	method
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Nice.Datas.SingletonDataObject		type
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Nice.Interface.IData		type
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Nice.Interface.IData	get_fields	method
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Nice.Interface.IVariable		type
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Nice.Interface.VariableUtils		type
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Nice.Interface.VariableUtils	GetResult	method
+Assembly-CSharp	Il2CppAssets.Scripts.PeroTools.Nice.Interface.VariableUtils	SetResult	method
+Assembly-CSharp	Il2CppAssets.Scripts.Structs.Network.NetworkRequest		type
+Assembly-CSharp	Il2CppAssets.Scripts.Structs.Network.NetworkRequest	get_url	method
+Assembly-CSharp	Il2CppAssets.Scripts.Structs.Network.StandardNetworkRequest		type
+Assembly-CSharp	Il2CppAssets.Scripts.Structs.Network.StandardNetworkRequest	FailCallback	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Controls.RankCell		type
+Assembly-CSharp	Il2CppAssets.Scripts.UI.GameMain.PnlVictory2dManager		type
+Assembly-CSharp	Il2CppAssets.Scripts.UI.GameMain.PnlVictory2dManager	get_m_CurVictoryComp	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.GameMain.SceneSubControl		type
+Assembly-CSharp	Il2CppAssets.Scripts.UI.GameMain.VictoryComps		type
+Assembly-CSharp	Il2CppAssets.Scripts.UI.GameMain.VictoryComps	get_fullCombo	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlBattle		type
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlBattle	get_CurrentBattleUIComp	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlBattle	get_currentComps	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlBattle	get_instance	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlBattleComps		type
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlBattleComps	get_scoreValue	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlBattleComps	get_sldProgress	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlMenu		type
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlMusicTag.MusicButtonCell		type
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlMusicTag.MusicButtonCell	get_musicInfo	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlMusicTag.PnlMusicTag		type
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlMusicTag.PnlMusicTag	get_viewItems	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlRank		type
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlRank	get_loading	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlRank	get_loadingTipSwitch	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlRank	get_m_RankCellBuffer	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlRank	get_noNet	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlRank	get_noRank	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlRank	get_scrollView	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlRank	get_server	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlReportCard		type
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlReportCard	get_imgCover	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlReportCard	get_imgFc	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlReportCard	get_imgS	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlReportCard	get_longAuthorNameController	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlReportCard	get_longSongNameController	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlReportCard	get_starObjs	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlReportCard	get_starTxtValues	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlReportCard	get_txtAccuracy	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlReportCard	get_txtCombo	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlReportCard	get_txtScrore	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlReportCard	get_txtTotalPassCountValue	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlStage		type
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlStage	get_artistNameTitle	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlStage	get_m_BtnOwn	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlStage	get_musicNameTitle	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlStage	get_stageAchievementPercent	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.PnlStage	get_titleOwn	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.WelcomeSelect		type
+Assembly-CSharp	Il2CppAssets.Scripts.UI.Panels.WelcomeSelect	get_m_NewVersionTip	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.PnlOptions.PnlPlaySetting		type
+Assembly-CSharp	Il2CppAssets.Scripts.UI.PnlOptions.PnlPlaySetting	get_m_BtnInputSetting	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.PnlOptions.PnlPlaySetting	get_m_PnlInputSettingMobile	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.PnlOptions.PnlPlaySetting	get_m_PnlInputSettingStandlone	method
+Assembly-CSharp	Il2CppAssets.Scripts.UI.RecommendVersionController		type
+Assembly-CSharp	Il2CppFormulaBase.StageBattleComponent		type
+Assembly-CSharp	Il2CppFormulaBase.StageBattleComponent	get_isInGame	method
+Assembly-CSharp	Il2CppFormulaBase.StageBattleComponent	get_m_TimeNodeOrders	method
+Assembly-CSharp	Il2CppFormulaBase.StageBattleComponent	get_offset	method
+Assembly-CSharp	Il2CppFormulaBase.StageBattleComponent	get_timeFromMusicStart	method
+Assembly-CSharp	Il2CppFormulaBase.StageBattleComponent	set_offset	method
+Assembly-CSharp	Il2CppFormulaBase.TimeNodeOrder		type
+Assembly-CSharp	Il2CppFormulaBase.TimeNodeOrder	get_isLongPressEnd	method
+Assembly-CSharp	Il2CppFormulaBase.TimeNodeOrder	get_isLongPressing	method
+Assembly-CSharp	Il2CppFormulaBase.TimeNodeOrder	get_isMuling	method
+Assembly-CSharp	Il2CppFormulaBase.TimeNodeOrder	get_md	method
+Assembly-CSharp	Il2CppFormulaBase.TimeNodeOrder	get_result	method
+Assembly-CSharp	Il2CppFormulaBase.TimeNodeOrder	set_result	method
+Assembly-CSharp	Il2CppGameLogic.GameGlobal		type
+Assembly-CSharp	Il2CppGameLogic.GameGlobal	get_gGameMusic	method
+Assembly-CSharp	Il2CppGameLogic.GameMusic		type
+Assembly-CSharp	Il2CppGameLogic.GameMusic	get_m_LastMusicTick	method
+Assembly-CSharp	Il2CppGameLogic.GameMusicScene		type
+Assembly-CSharp	Il2CppGameLogic.GameMusicScene	get_curSceneName	method
+Assembly-CSharp	Il2CppGameLogic.GameMusicScene	get_objCtrls	method
+Assembly-CSharp	Il2CppGameLogic.GameMusicScene	get_preloads	method
+Assembly-CSharp	Il2CppGameLogic.GameMusicScene	get_preloads1	method
+Assembly-CSharp	Il2CppGameLogic.GameMusicScene	get_scenes	method
+Assembly-CSharp	Il2CppGameLogic.GameMusicScene	get_scenesAnimas	method
+Assembly-CSharp	Il2CppGameLogic.GameMusicScene	get_SceneSubCtrls	method
+Assembly-CSharp	Il2CppGameLogic.GameTouchPlay		type
+Assembly-CSharp	Il2CppGameLogic.GameTouchPlay	get_isReverse	method
+Assembly-CSharp	Il2CppGameLogic.GameTouchPlay	get_isTouchLeftRight	method
+Assembly-CSharp	Il2CppGameLogic.GameTouchPlay	get_isTouchReverse	method
+Assembly-CSharp	Il2CppGameLogic.MusicConfigData		type
+Assembly-CSharp	Il2CppGameLogic.MusicConfigData	.ctor	method
+Assembly-CSharp	Il2CppGameLogic.MusicConfigData	get_blood	method
+Assembly-CSharp	Il2CppGameLogic.MusicConfigData	get_id	method
+Assembly-CSharp	Il2CppGameLogic.MusicConfigData	get_length	method
+Assembly-CSharp	Il2CppGameLogic.MusicConfigData	get_note_uid	method
+Assembly-CSharp	Il2CppGameLogic.MusicConfigData	get_pathway	method
+Assembly-CSharp	Il2CppGameLogic.MusicConfigData	get_time	method
+Assembly-CSharp	Il2CppGameLogic.MusicConfigData	set_blood	method
+Assembly-CSharp	Il2CppGameLogic.MusicConfigData	set_id	method
+Assembly-CSharp	Il2CppGameLogic.MusicConfigData	set_length	method
+Assembly-CSharp	Il2CppGameLogic.MusicConfigData	set_note_uid	method
+Assembly-CSharp	Il2CppGameLogic.MusicConfigData	set_pathway	method
+Assembly-CSharp	Il2CppGameLogic.MusicConfigData	set_time	method
+Assembly-CSharp	Il2CppGameLogic.MusicData		type
+Assembly-CSharp	Il2CppGameLogic.MusicData	.ctor	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	get_configData	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	get_doubleIdx	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	get_dt	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	get_endIndex	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	get_isDouble	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	get_isLongPressEnd	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	get_isLongPressing	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	get_longPressNum	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	get_longPressPTick	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	get_m_BattleScore	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	get_noteData	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	get_objId	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	get_sameTickNoteIdx	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	get_showTick	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	get_tick	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	set_configData	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	set_doubleIdx	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	set_dt	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	set_endIndex	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	set_isDouble	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	set_isLongPressEnd	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	set_isLongPressing	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	set_longPressNum	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	set_longPressPTick	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	set_m_BattleScore	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	set_noteData	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	set_objId	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	set_sameTickNoteIdx	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	set_showTick	method
+Assembly-CSharp	Il2CppGameLogic.MusicData	set_tick	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData		type
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	.ctor	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_addCombo	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_boss_action	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_damage	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_des	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_effect	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_fever	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_ibms_id	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_id	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_isShowPlayEffect	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_jumpNote	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_key_audio	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_left_great_range	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_left_perfect_range	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_m_BmsUid	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_mirror_uid	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_missCombo	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_noteUid	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_pathway	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_prefab_name	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_right_great_range	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_right_perfect_range	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_scene	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_sceneChangeNames	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_score	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_speed	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_type	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	get_uid	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_addCombo	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_boss_action	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_damage	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_des	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_effect	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_fever	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_ibms_id	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_id	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_isShowPlayEffect	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_jumpNote	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_key_audio	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_left_great_range	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_left_perfect_range	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_m_BmsUid	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_mirror_uid	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_missCombo	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_noteUid	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_pathway	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_prefab_name	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_right_great_range	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_right_perfect_range	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_scene	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_sceneChangeNames	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_score	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_speed	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_type	method
+Assembly-CSharp	Il2CppGameLogic.NoteConfigData	set_uid	method
+Assembly-CSharp	Il2CppPeroPeroGames.GlobalDefines.AlbumJsonIndexDefine		type
+Assembly-CSharp	Il2CppPeroPeroGames.GlobalDefines.BmsNodeUid		type
+Assembly-CSharp	Il2CppPeroPeroGames.GlobalDefines.InputController		type
+Assembly-CSharp	Il2CppPeroPeroGames.GlobalDefines.MDButtonType		type
+Assembly-CSharp	Il2CppUI.Panels.PnlInputs.PCInputModules.PnlInputKeyboard		type
+Il2Cppcom.rlabrecque.steamworks.net	Il2CppSteamworks.AppId_t		type
+Il2Cppcom.rlabrecque.steamworks.net	Il2CppSteamworks.AppId_t	m_AppId	field
+Il2Cppcom.rlabrecque.steamworks.net	Il2CppSteamworks.SteamApps		type
+Il2CppPeroTools2	Il2CppPeroTools2.Commons.Singleton`1		type
+Il2Cppspine-unity	Il2CppSpine.Animation		type
+Il2Cppspine-unity	Il2CppSpine.Animation	get_Name	method
+Il2Cppspine-unity	Il2CppSpine.Animation	get_timelines	method
+Il2Cppspine-unity	Il2CppSpine.ColorTimeline		type
+Il2Cppspine-unity	Il2CppSpine.ColorTimeline	get_frames	method
+Il2Cppspine-unity	Il2CppSpine.ExposedList`1		type
+Il2Cppspine-unity	Il2CppSpine.Skeleton		type
+Il2Cppspine-unity	Il2CppSpine.Skeleton	get_Data	method
+Il2Cppspine-unity	Il2CppSpine.SkeletonData		type
+Il2Cppspine-unity	Il2CppSpine.SkeletonData	FindAnimation	method
+Il2Cppspine-unity	Il2CppSpine.SkeletonData	get_Animations	method
+Il2Cppspine-unity	Il2CppSpine.SkeletonData	get_name	method
+Il2Cppspine-unity	Il2CppSpine.Timeline		type
+Il2Cppspine-unity	Il2CppSpine.TwoColorTimeline		type
+Il2Cppspine-unity	Il2CppSpine.TwoColorTimeline	get_frames	method
+Il2Cppspine-unity	Il2CppSpine.Unity.AtlasAssetBase		type
+Il2Cppspine-unity	Il2CppSpine.Unity.SkeletonAnimation		type
+Il2Cppspine-unity	Il2CppSpine.Unity.SkeletonDataAsset		type
+Il2Cppspine-unity	Il2CppSpine.Unity.SkeletonDataAsset	CreateRuntimeInstance	method
+Il2Cppspine-unity	Il2CppSpine.Unity.SkeletonDataAsset	GetSkeletonData	method
+Il2Cppspine-unity	Il2CppSpine.Unity.SkeletonRenderer		type
+Il2Cppspine-unity	Il2CppSpine.Unity.SkeletonRenderer	get_skeleton	method
+Il2Cppspine-unity	Il2CppSpine.Unity.SkeletonRenderer	get_skeletonDataAsset	method
+Il2Cppspine-unity	Il2CppSpine.Unity.SkeletonRenderer	Initialize	method
+Il2Cppspine-unity	Il2CppSpine.Unity.SkeletonRenderer	set_skeletonDataAsset	method
+Il2Cppspine-unity	Il2CppSpine.Unity.SpineAtlasAsset		type
+Il2Cppspine-unity	Il2CppSpine.Unity.SpineAtlasAsset	CreateRuntimeInstance	method
