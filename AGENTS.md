@@ -4,6 +4,7 @@
 - 1편 기능을 옮길 때는 1편 저장소(`H:\source\repos\muse dash test`)의 `AGENTS.md`와 `docs/guides/CHECKLIST.md`를 먼저 읽습니다. 1편 IL2CPP 사고 기록은 2편에도 그대로 적용될 가능성이 높습니다.
 - `SignatureDumper/`·`RetargetScanner/`는 독립 콘솔 툴입니다. 모드 프로젝트에 덤퍼·스캐너 코드를 넣지 않습니다(모드 안의 탐색 도구는 런타임 관찰용 `CallProbe`뿐).
 - 다른 게임 경로로 컴파일만 확인할 때는 `-p:SkipDeploy=true`를 줍니다(1편 `Mods`에 2편 DLL이 배포되는 것 방지).
+- **1편 설치본(`H:\muse dash hwa`)에서는 실행 시험을 하지 않습니다.** 2편 모드·탐침의 인게임 검증은 2편 출시 후 2편 사본에서 합니다(사용자 지시, 2026-10-27). 1편은 어셈블리를 읽기 전용으로 참조하는 데만 씁니다.
 - 소스 파일이 600줄을 넘으면 기능을 더 붙이기 전에 작은 단위로 나눕니다(1편 규칙 승계).
 
 # 인수인계 (Handover)
@@ -27,4 +28,4 @@
    - 자체 시험에서 `powershell -ExecutionPolicy Bypass -File ...`로 스크립트를 돌리려던 것은 Claude Code 자동 모드 분류기가 막았습니다. PowerShell 도구에서 `& "<경로>.ps1"`로 직접 부르면 됩니다.
    - `compare_dumps.ps1`에서 어셈블리 폴더를 빼고 대조한 것: 1편 firstpass와 spine-unity에 같은 이름 타입이 있어 서로 덮어 가짜 차이가 났습니다. 기본은 어셈블리까지 키에 넣고, `-IgnoreAssembly`는 어셈블리 이름이 바뀌었을 때만 씁니다.
    - CallProbe에서 타입을 `AccessTools.TypeByName`으로 찾은 것: 못 찾으면 모든 어셈블리를 훑으며 UnityEngine.UIElementsModule의 TypeLoadException 경고를 30줄 넘게 남겼습니다. 어셈블리마다 `GetType(전체이름)`으로 바꿨습니다(이 수정 자체는 컴파일만 확인, 인게임 재확인 전).
-6. **빌드·배포**: `dotnet build "muse dash 2 test/muse dash 2 test.csproj"` → `$(GamePath)\Mods\muse-dash-2-custom-chart.dll`로 자동 배포(`[AutoDeploy] Successfully deployed` 줄로 확인). 2026-10-27에 1편 어셈블리 참조 + `SkipDeploy`로 경고·오류 0개 컴파일만 확인했습니다. SignatureDumper는 `dotnet build SignatureDumper/SignatureDumper.csproj -f net8.0`, RetargetScanner는 `dotnet build RetargetScanner/RetargetScanner.csproj`(net8.0). 1편 Mods에 시험 배포했던 `muse-dash-2-custom-chart.dll`과 1편 `UserData/CallProbe.txt`는 시험 뒤 지웠습니다.
+6. **빌드·배포**: `dotnet build "muse dash 2 test/muse dash 2 test.csproj"` → `$(GamePath)\Mods\muse-dash-2-custom-chart.dll`로 자동 배포(`[AutoDeploy] Successfully deployed` 줄로 확인). 2026-10-27에 1편 어셈블리 참조 + `SkipDeploy`로 경고·오류 0개 컴파일만 확인했습니다. SignatureDumper는 `dotnet build SignatureDumper/SignatureDumper.csproj -f net8.0`, RetargetScanner는 `dotnet build RetargetScanner/RetargetScanner.csproj`(net8.0). 2026-10-27에 1편 설치본에서 한 실행 시험의 흔적은 전부 되돌렸습니다: `Mods/muse-dash-2-custom-chart.dll`, `UserData/CallProbe.txt`, 그 세션의 MelonLoader 로그를 지우고 `Latest.log`를 직전 세션(10-26) 로그로 복원. 그 세션 중 1편 게임이 메뉴에서 평소처럼 세이브를 저장했으므로 세이브 파일 시각은 그때로 바뀌었습니다(플레이는 없었음).
