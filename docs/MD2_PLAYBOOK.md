@@ -3,7 +3,7 @@
 [체크리스트](MD2_LAUNCH_CHECKLIST.md)가 "무엇을 빠뜨리지 않을까"라면, 이 문서는 "**어떻게 빨리 결정하고, 빨리 만들고, 빨리 확인할까**"입니다.
 핵심은 세 가지입니다.
 
-1. **보고서로 일을 나눕니다.** 덤프를 손으로 뒤지기 전에 `RetargetScanner check`로 1편 훅 166건·게임 API 참조 425건의 상태를 한 번에 봅니다.
+1. **보고서로 일을 나눕니다.** 덤프를 손으로 뒤지기 전에 `RetargetScanner check`로 1편 훅 167건·게임 API 참조 425건의 상태를 한 번에 봅니다.
 2. **재빌드 없이 관찰합니다.** 후보 메서드는 `UserData/CallProbe.txt`에 적고 게임만 다시 켜서 호출 순서와 인자를 봅니다.
 3. **기능마다 "확인 신호"를 미리 정해 둡니다.** 무엇이 보이면 끝인지 정해 두지 않으면 같은 기능을 몇 번이고 다시 봅니다.
 
@@ -31,7 +31,7 @@
 "RetargetScanner/bin/Debug/net8.0/RetargetScanner.exe" check docs/md1-retarget "H:\muse dash 2 hwa\MelonLoader\Il2CppAssemblies" scratch/retarget-report.md
 ```
 
-`docs/md1-retarget/`에는 1편 v0.11.1 배포 DLL에서 뽑은 목록이 들어 있습니다(2026-10-27, 1편 6.7.0으로 자체 시험해 훅 166/166·API 425/425 "그대로").
+`docs/md1-retarget/`에는 1편 v0.11.1 배포 DLL에서 뽑은 목록이 들어 있습니다(2026-10-27, 1편 6.7.0으로 자체 시험해 훅 167/167·API 425/425 "그대로"). **1편 v0.12.0에서 추가된 `StageBattleComponent.GetMusicDataFromStageInfo` 훅은 아직 목록에 없습니다.** 1편 변경이 끝나면 7장 명령으로 다시 뽑으십시오.
 
 | 보고서 상태 | 뜻 | 할 일 | 예상 시간 |
 |---|---|---|---|

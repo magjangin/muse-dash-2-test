@@ -3,6 +3,12 @@
 뮤즈대시 2(2026-12-25 출시 예정) 커스텀 차트 모드를 위한 준비 저장소입니다.
 지금은 **탐색 도구 + 모드 뼈대 + 출시일 체크리스트**만 있습니다. 게임 기능 코드는 출시 후 1편([`H:\source\repos\muse dash test`](../muse%20dash%20test))에서 하나씩 옮깁니다.
 
+**현재 상태 (2026-11-05)**
+- 모드 버전: `0.0.1` (단일 출처: `muse dash 2 test/Core/ModInfo.cs`)
+- 릴리즈·태그: 없음. 2편 출시(2026-12-25)와 인게임 검증 뒤에 첫 릴리즈를 냅니다.
+- 게임 기능 없음. 기능은 `CallProbe`(관찰 전용 탐침)뿐입니다.
+- 1편 훅 목록(`docs/md1-retarget/`)은 1편 v0.11.1 기준이며, 1편 v0.12.0에서 훅 1건(`StageBattleComponent.GetMusicDataFromStageInfo`)이 추가되었습니다. 아직 목록에 없습니다.
+
 **출시일에 할 일은 [docs/MD2_LAUNCH_CHECKLIST.md](docs/MD2_LAUNCH_CHECKLIST.md)를 위에서부터 따라가면 됩니다.**
 빨리 결정하고 구현·확인하는 방법(보고서 읽기, 결정표, 기능별 확인 신호)은 [docs/MD2_PLAYBOOK.md](docs/MD2_PLAYBOOK.md).
 
