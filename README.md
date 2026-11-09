@@ -3,11 +3,11 @@
 뮤즈대시 2(2026-12-25 출시 예정) 커스텀 차트 모드를 위한 준비 저장소입니다.
 지금은 **탐색 도구 + 모드 뼈대 + 출시일 체크리스트**만 있습니다. 게임 기능 코드는 출시 후 1편([`H:\source\repos\muse dash test`](../muse%20dash%20test))에서 하나씩 옮깁니다.
 
-**현재 상태 (2026-11-05)**
+**현재 상태 (2026-11-09)**
 - 모드 버전: `0.0.1` (단일 출처: `muse dash 2 test/Core/ModInfo.cs`)
 - 릴리즈·태그: 없음. 2편 출시(2026-12-25)와 인게임 검증 뒤에 첫 릴리즈를 냅니다.
 - 게임 기능 없음. 기능은 `CallProbe`(관찰 전용 탐침)뿐입니다.
-- 1편 훅 목록(`docs/md1-retarget/`)은 1편 v0.11.1 기준이며, 1편 v0.12.0에서 훅 1건(`StageBattleComponent.GetMusicDataFromStageInfo`)이 추가되었습니다. 아직 목록에 없습니다.
+- 1편 훅·API 목록(`docs/md1-retarget/`)은 1편 최신 v0.12.1+ 배포 DLL 기준으로 재추출 완료(정적 훅 167건, 런타임 동적 대상 2건, 게임 API 참조 428건, 패치 클래스 126개). 1편 6.7.0 어셈블리 대조 결과 100% "그대로" 확인.
 
 **출시일에 할 일은 [docs/MD2_LAUNCH_CHECKLIST.md](docs/MD2_LAUNCH_CHECKLIST.md)를 위에서부터 따라가면 됩니다.**
 빨리 결정하고 구현·확인하는 방법(보고서 읽기, 결정표, 기능별 확인 신호)은 [docs/MD2_PLAYBOOK.md](docs/MD2_PLAYBOOK.md).
@@ -21,7 +21,7 @@
 | `scripts/` | 1편에서 옮긴 PowerShell 탐색 스크립트 + 새로 만든 `compare_dumps.ps1` |
 | `muse dash 2 test/` | MelonLoader 모드 뼈대. `MainMod`, `ModLogger`, 1편의 `PatchInstaller`·`PatchHealthCheck`(범용 부분만), 설정 파일 기반 호출 탐침 `CallProbe` |
 | `docs/` | 출시 대비 체크리스트, 플레이북 |
-| `docs/md1-retarget/` | 1편 v0.11.1에서 뽑은 `hooks.tsv`(167건)·`api-refs.tsv`(425건)·`patch-files.tsv`(패치 클래스→1편 파일) |
+| `docs/md1-retarget/` | 1편 최신 v0.12.1+에서 뽑은 `hooks.tsv`(169건)·`api-refs.tsv`(428건)·`patch-files.tsv`(패치 클래스→1편 파일 126개) |
 | `reference/md1-6.7.0-signatures/` | 1편 6.7.0 시그니처 고정 스냅샷(로컬 전용, git 제외). 2편 덤프와 비교할 기준 |
 | `Decompiled/`, `scratch/` | 2편 덤프·임시 출력(로컬 전용, git 제외) |
 

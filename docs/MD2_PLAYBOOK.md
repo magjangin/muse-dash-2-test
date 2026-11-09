@@ -3,7 +3,7 @@
 [체크리스트](MD2_LAUNCH_CHECKLIST.md)가 "무엇을 빠뜨리지 않을까"라면, 이 문서는 "**어떻게 빨리 결정하고, 빨리 만들고, 빨리 확인할까**"입니다.
 핵심은 세 가지입니다.
 
-1. **보고서로 일을 나눕니다.** 덤프를 손으로 뒤지기 전에 `RetargetScanner check`로 1편 훅 167건·게임 API 참조 425건의 상태를 한 번에 봅니다.
+1. **보고서로 일을 나눕니다.** 덤프를 손으로 뒤지기 전에 `RetargetScanner check`로 1편 훅 169건·게임 API 참조 428건의 상태를 한 번에 봅니다.
 2. **재빌드 없이 관찰합니다.** 후보 메서드는 `UserData/CallProbe.txt`에 적고 게임만 다시 켜서 호출 순서와 인자를 봅니다.
 3. **기능마다 "확인 신호"를 미리 정해 둡니다.** 무엇이 보이면 끝인지 정해 두지 않으면 같은 기능을 몇 번이고 다시 봅니다.
 
@@ -31,7 +31,7 @@
 "RetargetScanner/bin/Debug/net8.0/RetargetScanner.exe" check docs/md1-retarget "H:\muse dash 2 hwa\MelonLoader\Il2CppAssemblies" scratch/retarget-report.md
 ```
 
-`docs/md1-retarget/`에는 1편 v0.11.1 배포 DLL에서 뽑은 목록이 들어 있습니다(2026-10-27, 1편 6.7.0으로 자체 시험해 훅 167/167·API 425/425 "그대로"). **1편 v0.12.0에서 추가된 `StageBattleComponent.GetMusicDataFromStageInfo` 훅은 아직 목록에 없습니다.** 1편 변경이 끝나면 7장 명령으로 다시 뽑으십시오.
+`docs/md1-retarget/`에는 1편 최신 v0.12.1+ 배포 DLL에서 뽑은 목록이 들어 있습니다(2026-11-09, 1편 6.7.0으로 자체 시험해 정적 훅 167/167·API 428/428 "그대로", 런타임 대상 2건). 1편 v0.12.0에서 추가된 `StageBattleComponent.GetMusicDataFromStageInfo` 훅 및 v0.12.1의 진행바 람다 동적 타깃 폴백까지 모두 포함되어 있습니다. 1편 모드를 더 고치면 7장 명령으로 다시 뽑으십시오.
 
 | 보고서 상태 | 뜻 | 할 일 | 예상 시간 |
 |---|---|---|---|
@@ -66,6 +66,9 @@
 | MelonLoader가 안 켜짐(Mono, `TypeLoadException`/`MissingMethodException`) | 스트리핑된 BCL → 같은 Unity LTS 줄 도너에서 이식 | 전역 메모리 "스트리핑된 Mono 게임 크래시" |
 | 안티치트 있음 / 기록이 서버 검증형 | 오프라인 전용 사본에서만 작업, 서버 전송 차단을 기능 1순위로 | 다른 플레이어·계정에 영향이 가는 유일한 경로 |
 | 패치 하나가 게임을 멈춤 | 그 클래스만 빼고 다시 켬. `PatchInstaller` 로그에 남은 이름부터 | 1편: JIT 실패 Prefix는 원본까지 막음 |
+| 버전 변경으로 패치 일부 멤버 누락 | `PatchInstaller` 다중 패치 부분 적용 활용. 패치 본문에서 게임 멤버 호출은 헬퍼로 분리 후 `try/catch` (Prefix catch는 반드시 `return true`) | `PatchInstaller`는 패치 자체만 사전 검증하며 내부 헬퍼/람다 JIT는 못 잡음 |
+| 숙주에 없는 난이도로 플레이 시 NRE/멈춤 | `StageBattleComponent.GetMusicDataFromStageInfo`에서 숙주 차트 에셋명만 존재하는 난이도로 교체 | 1편: 0-4 Master 시작 시 차트 에셋 없어 보라색 화면 정지 |
+| 컴파일러 생성 람다 메서드(`_b__...`) 사라짐 | 동적 타깃(`TargetMethods`) 탐색 + 정적 타깃 폴백 구조로 구현 | 빌드/컴파일러 버전마다 람다 번호가 바뀜 |
 | 로그 없이 게임이 꺼짐 | 마지막으로 추가한 패치가 virtual / private+out / 한 줄 세터인지 먼저 의심 | 1편 CHECKLIST의 IL2CPP 함정 |
 | 후보 메서드가 여럿 | 고르지 말고 전부 `CallProbe.txt`에 넣고 한 번에 관찰 | 덤프 읽기보다 한 번 실행이 빠름 |
 | 제목·텍스트가 화면에 안 맞음 | 표시 컴포넌트가 아니라 **조회 함수**부터 찾음 | 1편: `LongSongNameController.Refresh`에서 고친 건 원인보다 늦은 자리였음 |
@@ -154,11 +157,13 @@ grep -E "PatchInstaller|PatchHealth|\[Scene\]|trampoline|Exception|Error" "H:/mu
 | 서버 전송 차단 (`StandardNetworkRequest.SendRequest`, `PnlRank.*`) | 커스텀 곡 결과 화면에서 랭킹 요청 로그가 차단 메시지로 끝남 | — |
 | 곡 DB 주입 (`dbMusicTag.m_AllMusicInfo`) | `GetMusicInfoFromAll("<가상 UID>")`가 null이 아님(1편 `[대성공]` 로그) | 조회 함수가 UID가 아니라 인덱스로 물음(`…ByIndex`) |
 | 차트 주입 (`DBStageInfo.SetRuntimeMusicData` Postfix) | 주입한 노트 수 = BMS 노트 수, 첫 노트가 BMS 시각에 맞음 | 값 타입 필드 쓰기 유실(`a.b.c = x`), 리스트 원소 되쓰기 누락 |
+| 난이도별 채보 (`BmsChartSet`, `info.txt`) | 난이도 탭 전환 시 지정된 BMS 채보와 기록이 분리 로드됨. 숙주에 없는 난이도(0-4 Master) 선택 시 크래시 없이 정상 진입 | 메뉴에서 `DBBattleStage.selectedDifficulty`를 읽음(`DBMusicTag.selectedDiffTglIndex`로 대체해야 함). 숙주 맵 에셋 누락 시 `GetMusicDataFromStageInfo` 치환 누락 |
+| 텍스트 정규화 (`TextNormalizer`) | 영문 축약형(`you're`, `don't`, `it's`, `I'm`)에 공백 분리 깨짐 없음 | 파싱 단계 누락 |
 | 노트 속도·모양 | 속도 2·3 노트가 보이고 판정선에 맞게 도착 | 프리팹 끝자리(1편 `_2`/`_3`), dt만 바꾸면 렌더가 깨짐 |
 | 곡 제목 | 목록·하단 제목이 커스텀 제목, **곡을 넘기는 순간에도** 맞음 | 세션의 선택 곡이 조회보다 늦게 갱신(1편 `DrawingUid`) |
-| BGM 교체 | 배틀 중 커스텀 음원, 진행바 길이가 커스텀 곡 기준 | 업데이트로 새 오디오 소스 필드가 생김(1편 6.7.0 `m_BgmOneShotSource`) |
+| BGM 교체 | 배틀 중 커스텀 음원, 진행바 길이가 커스텀 곡 기준 | 업데이트로 새 오디오 소스 필드가 생김(1편 6.7.0 `m_BgmOneShotSource`). BGM 역시크 시도(디코더 히치) |
 | 정확도·결과 화면 | 올퍼펙트 플레이가 100%로 표시 | 하트·음표 집계가 분모·분자에서 빠짐 |
-| 강제 퍼펙트 | 판정이 전부 퍼펙트이고 **홀드가 꼬리까지 유지** | `isPerfectNode`를 켜면 홀드가 꼬리 첫 칸에서 끝남 |
+| 강제 퍼펙트 | 판정이 전부 퍼펙트이고 **홀드가 꼬리까지 유지** | `isPerfectNode`를 켜면 홀드가 꼬리 첫 칸에서 끝남(결과 코드만 승격해야 함) |
 | 태그 탭·아이콘 | 커스텀 탭이 보이고 눌렀을 때 곡 목록이 뜸 | 2편 UI 재설계 가능성이 가장 큰 곳. 아이콘이 안 떠도 곡은 돌아가므로 마지막 |
 
 ---

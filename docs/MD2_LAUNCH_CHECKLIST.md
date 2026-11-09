@@ -19,8 +19,8 @@
       1편 저장소의 `Decompiled/`는 예전 덤퍼 출력이라 그대로 비교하면 `params Int32[]`↔`int[]` 같은 잡음이 섞입니다.
       지금 덤퍼로 새로 떠 두었고, `compare_dumps.ps1`의 기본 비교 기준입니다.
 - [x] 탐색 도구 이식·빌드 확인(SignatureDumper, `scripts/`), 모드 뼈대 컴파일 확인(1편 어셈블리로 `-p:SkipDeploy=true` 빌드).
-- [x] **1편 훅·API 목록 추출** → `docs/md1-retarget/`(훅 167건, 게임 API 참조 425건, 패치 클래스→파일 125개, 1편 v0.11.1 배포 DLL 기준. 1편 v0.12.0의 신규 훅 1건은 아직 없음 → 1편 변경이 끝나면 다시 뽑기).
-      1편 6.7.0에 되돌려 대조해 전부 "그대로", 일부러 망가뜨린 목록으로 6가지 상태를 모두 잡는지 확인(2026-10-27).
+- [x] **1편 훅·API 목록 추출** → `docs/md1-retarget/`(훅 169건 [정적 167건 + 런타임 동적 2건], 게임 API 참조 428건, 패치 클래스→파일 126개, 1편 최신 v0.12.1+ 배포 DLL 기준).
+      1편 6.7.0에 되돌려 대조해 정적 훅 167/167, API 428/428 전부 "그대로", 일부러 망가뜨린 목록으로 6가지 상태를 모두 잡는지 확인(2026-10-27 및 2026-11-09 v0.12.1+ 재추출 검증 완료).
       **1편 모드를 출시 전에 더 고치면** 플레이북 7장 명령으로 다시 뽑습니다.
 - [x] CallProbe를 1편 6.7.0에서 실행 확인(와일드카드·호출 순서·씬 요약). 인자 값 기록은 미확인.
 - [ ] **스토어 페이지에서 App ID 확인.** 출시 후 `H:\steam\steamapps\appmanifest_<AppID>.acf`를 찾는 열쇠입니다.
@@ -112,7 +112,7 @@
        가짜 UID 기록이 순정 세이브에 들어가면 되돌리기 어렵고, 기록이 랭킹 서버로 올라가면 다른 플레이어에게 영향이 갑니다.
        1편 대응: `DataManager.Save()` Prefix/Postfix, `StandardNetworkRequest.SendRequest()`, `PnlRank.*`.
 2. [ ] **곡 DB의 주인** 찾기(1편 `GlobalDataBase.dbMusicTag.m_AllMusicInfo`, 조회 `GetMusicInfoFromAll(uid)`).
-3. [ ] **차트 주입 지점**(1편 `DBStageInfo.SetRuntimeMusicData(List)` Postfix). 1편 BMS 파서·로직 테스트는 게임과 무관해 그대로 옮길 후보입니다.
+3. [ ] **차트 주입 지점**(1편 `DBStageInfo.SetRuntimeMusicData(List)` Postfix)과 **난이도별 차트 에셋 보정**(`StageBattleComponent.GetMusicDataFromStageInfo` Prefix). 1편 BMS 파서·로직 테스트(`BmsParser`, `BmsChartSet`, `TextNormalizer`)는 게임과 무관해 그대로 옮길 후보입니다.
 4. [ ] **가상 곡/앨범 등록 + 조회 우회**(임무 B·C, 데이터 계층 🟡). 여기까지 되면 커스텀 곡이 돕니다.
 5. [ ] 오디오(BGM) 교체, 정확도·결과 화면, 강제 퍼펙트·오토 플레이.
 6. [ ] **태그 탭·아이콘 UI(임무 A·D, 🔴)는 마지막.** 2편 UI가 재설계됐을 가능성이 가장 큰 곳이라 "이름 교체"가 아니라 "메커니즘 재분석"이 필요할 수 있습니다.
@@ -125,6 +125,10 @@
 - [ ] `private` + `out` 조합, `virtual` 메서드 패치는 로그 없이 네이티브 크래시가 날 수 있습니다. 한 줄짜리 세터는 인라인돼 훅이 안 걸립니다.
 - [ ] Harmony는 대상을 **그 클래스에 직접 선언된 멤버에서만** 찾습니다. `PatchHealthCheck`는 부모까지 찾으므로 초록불이어도 못 걸 수 있습니다.
 - [ ] Prefix의 `catch`는 `return true`로 원본을 실행시킵니다. 예외를 삼키고 `false`면 게임이 멈춥니다. 게임 멤버 접근은 별도 헬퍼 메서드로 빼야 `PatchInstaller`가 못 보는 JIT 실패를 try가 잡습니다.
+- [ ] **강제 퍼펙트에서 `isPerfectNode = true`를 켜지 않습니다.** 게임은 이 값을 "정확한 시각" 표시로 쓰고, 홀드 꼬리에서는 `TouchEndResult`가 `isPerfectNode`나 `isRight`가 켜진 칸에서 홀드를 끝내므로 홀드가 꼬리 첫 칸에서 일찍 끝납니다. 판정표(`m_TimeNodeOrders`)의 구조 플래그는 건드리지 않고 결과(`result`: `Great`/`Cool` → `Prefect`)만 바꿉니다.
+- [ ] **난이도별 차트에서 `DBBattleStage.selectedDifficulty`는 배틀에서만 신뢰합니다.** 메뉴 곡 목록/기록 조회에서는 지난 배틀의 잔존 값이 남으므로, 메뉴는 반드시 `DBMusicTag.selectedDiffTglIndex`를 읽어야 합니다. 또한 호스트 곡에 없는 난이도(예: 0-4 Master)는 `GetMusicDataFromStageInfo`에서 맵 이름만 변경하여 NRE를 막습니다.
+- [ ] **진행바 트윈 세터 등 컴파일러 생성 람다 메서드(`_MusicProgressInit_b__48_1` 등)는 빌드마다 번호가 바뀝니다.** 동적 대상 탐색(`TargetMethods`)과 정적 대상 폴백을 두고, 매 프레임 리플렉션 풀스캔이 일어나지 않도록 캐싱/스로틀링합니다.
+- [ ] **BMS 메타데이터 파싱 시 영문 축약형의 공백 분리(`you'  re`, `don ' t` 등)를 자동 교정(`TextNormalizer`)합니다.** 외부 차트 인코딩 변환이나 작성자 오타가 UI 전반(곡명·결과창·RPC)에 깨져 나오는 것을 방지합니다.
 - [ ] 리플렉션으로 객체를 깊게 훑는 진단 탐침은 노트 많은 곡에서 프로세스를 날립니다. 진단은 개수·분포 요약까지만, 켠 채로 두지 않습니다.
 - [ ] 문자열로 쓴 멤버 이름(`[HarmonyPatch(..., "M")]`, 리플렉션, 래퍼)은 컴파일러가 못 봅니다. 덤프와 대조합니다.
 - [ ] GameObject·프리팹·애니메이션 이름, 씬 계층은 덤프에 없습니다. 로그로만 확인합니다.

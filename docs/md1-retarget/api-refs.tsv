@@ -97,7 +97,9 @@ Assembly-CSharp	Il2CppAssets.Scripts.Database.DataClass.AlbumTagInfo	SetTagUids	
 Assembly-CSharp	Il2CppAssets.Scripts.Database.DataHelper		type
 Assembly-CSharp	Il2CppAssets.Scripts.Database.DataHelper	get_offset	method
 Assembly-CSharp	Il2CppAssets.Scripts.Database.DBBattleStage		type
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBBattleStage	get_m_StageMapName	method
 Assembly-CSharp	Il2CppAssets.Scripts.Database.DBBattleStage	get_selectedDifficulty	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBBattleStage	set_m_StageMapName	method
 Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigAlbums		type
 Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigAlbums	get_m_Items	method
 Assembly-CSharp	Il2CppAssets.Scripts.Database.DBConfigAlbums	GetAlbumsInfoByUid	method
@@ -125,6 +127,7 @@ Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag	AddCustomAlbumTagsSort	
 Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag	AllAlbumTagsSortContains	method
 Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag	get_m_AllMusicInfo	method
 Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag	get_m_CurSelectedTagIndex	method
+Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag	get_selectedDiffTglIndex	method
 Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag	get_stageShowMusicList	method
 Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag	GetAlbumTagInfo	method
 Assembly-CSharp	Il2CppAssets.Scripts.Database.DBMusicTag	GetMusicInfoFromAll	method
