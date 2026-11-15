@@ -1,6 +1,6 @@
 # 뮤즈대시 2 출시 대비 체크리스트
 
-출시 예정: **2026-12-25** (전역 메모리 기준, 스토어 페이지에서 다시 확인할 것). 작성일 2026-10-27 = D-59.
+출시 예정: **2026-12-25 (비공식 보도, 미확정)**. 2026-05 게임 소식 계정들이 BitSummit 스폰서 페이지를 인용해 퍼뜨린 날짜이고, peropero 공식 발표는 없습니다. 2026-11-15 확인 시 Steam 상점(app 4839390)은 날짜 없이 "출시 예정", GameFAQs는 TBA였습니다. 연기될 수 있으니 Steam 찜 알림과 peropero 공식 채널(X·Bilibili)을 보고, 확정되면 이 줄과 README·AGENTS.md를 같이 고칩니다. 아래 일정은 전부 "출시 당일·D+1" 같은 상대 기준이라 날짜가 바뀌어도 순서는 그대로입니다. 작성일 2026-10-27 = D-59.
 
 이 문서는 "그날 무엇을, 어떤 순서로"만 다룹니다. 1편에서 **무엇을 옮길지**(훅 전체 목록, 태그 재타깃팅 지도)와 **왜 그렇게 했는지**는 1편 저장소 문서에 이미 있습니다.
 
@@ -23,6 +23,8 @@
       1편 6.7.0에 되돌려 대조해 정적 훅 167/167, API 428/428 전부 "그대로", 일부러 망가뜨린 목록으로 6가지 상태를 모두 잡는지 확인(2026-10-27 및 2026-11-09 v0.12.1+ 재추출 검증 완료).
       **1편 모드를 출시 전에 더 고치면** 플레이북 7장 명령으로 다시 뽑습니다.
 - [x] CallProbe를 1편 6.7.0에서 실행 확인(와일드카드·호출 순서·씬 요약). 인자 값 기록은 미확인.
+- [ ] **시연 행사 관찰(2026-12-05 무렵, 경기도).** 움직이는 앨범 커버가 Live2D인지 Spine인지 가리는 게 핵심입니다.
+      볼 것과 기록 표: [MD2_DEMO_EVENT_CHECKLIST.md](MD2_DEMO_EVENT_CHECKLIST.md). 결과는 "시연판 기준"으로 아래 실측 기록에 적습니다.
 - [ ] **스토어 페이지에서 App ID 확인.** 출시 후 `H:\steam\steamapps\appmanifest_<AppID>.acf`를 찾는 열쇠입니다.
 - [ ] **1편 세이브·설정 백업.** 2편이 1편 세이브를 읽어 연동 보상을 주는 구조일 수 있습니다. 2편을 켜기 전에 1편 쪽을 먼저 떠 둡니다.
 - [ ] **1편 보존 작업 마감 점검.** 2편 출시 뒤 1편 서비스·콜라보가 줄어들 위험이 있습니다(전역 메모리 "Abandonware 보존 프로젝트").
@@ -115,7 +117,7 @@
        가짜 UID 기록이 순정 세이브에 들어가면 되돌리기 어렵고, 기록이 랭킹 서버로 올라가면 다른 플레이어에게 영향이 갑니다.
        1편 대응: `DataManager.Save()` Prefix/Postfix, `StandardNetworkRequest.SendRequest()`, `PnlRank.*`.
 2. [ ] **곡 DB의 주인** 찾기(1편 `GlobalDataBase.dbMusicTag.m_AllMusicInfo`, 조회 `GetMusicInfoFromAll(uid)`).
-3. [ ] **차트 주입 지점**(1편 `DBStageInfo.SetRuntimeMusicData(List)` Postfix)과 **난이도별 차트 에셋 보정**(`StageBattleComponent.GetMusicDataFromStageInfo` Prefix). 1편 BMS 파서·로직 테스트(`BmsParser`, `BmsChartSet`, `TextNormalizer`)는 게임과 무관해 그대로 옮길 후보입니다.
+3. [ ] **차트 주입 지점**(1편 `DBStageInfo.SetRuntimeMusicData(List)` Postfix)과 **난이도별 차트 에셋 보정**(`StageBattleComponent.GetMusicDataFromStageInfo` Prefix). 1편 BMS 파서·info.txt 파서·`TextNormalizer` 등 게임 무관 로직과 로직 테스트 170개는 **2026-11-15에 이미 옮겼습니다**(`Bms/`, `Hwa/`, `Spine/`, `Core/` 일부, `muse dash 2 test.LogicTests/`). 여기서는 이 로직을 2편 훅에 잇는 일만 남습니다.
 4. [ ] **가상 곡/앨범 등록 + 조회 우회**(임무 B·C, 데이터 계층 🟡). 여기까지 되면 커스텀 곡이 돕니다.
 5. [ ] 오디오(BGM) 교체, 정확도·결과 화면, 강제 퍼펙트·오토 플레이.
 6. [ ] **태그 탭·아이콘 UI(임무 A·D, 🔴)는 마지막.** 2편 UI가 재설계됐을 가능성이 가장 큰 곳이라 "이름 교체"가 아니라 "메커니즘 재분석"이 필요할 수 있습니다.

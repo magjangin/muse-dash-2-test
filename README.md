@@ -1,12 +1,13 @@
 # muse dash 2 test
 
-뮤즈대시 2(2026-12-25 출시 예정) 커스텀 차트 모드를 위한 준비 저장소입니다.
+뮤즈대시 2(2026-12-25 출시 예정 — 비공식 보도, Steam 미표기) 커스텀 차트 모드를 위한 준비 저장소입니다.
 지금은 **탐색 도구 + 모드 뼈대 + 출시일 체크리스트**만 있습니다. 게임 기능 코드는 출시 후 1편([`H:\source\repos\muse dash test`](../muse%20dash%20test))에서 하나씩 옮깁니다.
 
 **현재 상태 (2026-11-09)**
 - 모드 버전: `0.0.1` (단일 출처: `muse dash 2 test/Core/ModInfo.cs`)
-- 릴리즈·태그: 없음. 2편 출시(2026-12-25)와 인게임 검증 뒤에 첫 릴리즈를 냅니다.
+- 릴리즈·태그: 없음. 2편 출시(2026-12-25 예정, 미확정)와 인게임 검증 뒤에 첫 릴리즈를 냅니다.
 - 게임 기능 없음. 기능은 `CallProbe`(관찰 전용 탐침)뿐입니다.
+- 1편의 게임 무관 순수 로직(BMS 파서·info.txt 파서·텍스트 정규화·기록 병합 규칙 등 약 2,900줄)과 로직 테스트 170개는 2026-11-15에 옮겼습니다(아래 "구성").
 - 1편 훅·API 목록(`docs/md1-retarget/`)은 1편 최신 v0.12.1+ 배포 DLL 기준으로 재추출 완료(정적 훅 167건, 런타임 동적 대상 2건, 게임 API 참조 428건, 패치 클래스 126개). 1편 6.7.0 어셈블리 대조 결과 100% "그대로" 확인.
 
 **출시일에 할 일은 [docs/MD2_LAUNCH_CHECKLIST.md](docs/MD2_LAUNCH_CHECKLIST.md)를 위에서부터 따라가면 됩니다.**
@@ -20,6 +21,8 @@
 | `RetargetScanner/` | 1편 모드 DLL에서 훅 대상·게임 API 참조를 뽑아(`extract`) 다른 빌드에 대조하는(`check`) 독립 콘솔. 상태별 보고서와 "어디로 갔을지" 후보 |
 | `scripts/` | 1편에서 옮긴 PowerShell 탐색 스크립트 + 새로 만든 `compare_dumps.ps1` |
 | `muse dash 2 test/` | MelonLoader 모드 뼈대. `MainMod`, `ModLogger`, 1편의 `PatchInstaller`·`PatchHealthCheck`(범용 부분만), 설정 파일 기반 호출 탐침 `CallProbe` |
+| `muse dash 2 test/Bms/`, `Hwa/`, `Spine/`, `Core/`(일부) | 1편에서 옮긴 게임 무관 순수 로직. BMS·WAV 파서, 난이도별 채보(`BmsChartSet`), 홀드·샌드백 짝 맞추기, info.txt 파서(`HwaManifestLoader`), 스킨 폴더 규칙, `TextNormalizer`, `PlayRecordMerge`, `ChartFingerprint`(파일 지문만), `GameVersionCheck`(검증 버전 미정 `0.0.0`) 등 |
+| `muse dash 2 test.LogicTests/` | 위 순수 로직의 테스트(1편에서 옮김, 170개). 게임 없이 실행됩니다 |
 | `docs/` | 출시 대비 체크리스트, 플레이북 |
 | `docs/md1-retarget/` | 1편 최신 v0.12.1+에서 뽑은 `hooks.tsv`(169건)·`api-refs.tsv`(428건)·`patch-files.tsv`(패치 클래스→1편 파일 126개) |
 | `reference/md1-6.7.0-signatures/` | 1편 6.7.0 시그니처 고정 스냅샷(로컬 전용, git 제외). 2편 덤프와 비교할 기준 |
@@ -53,7 +56,7 @@ dotnet build RetargetScanner/RetargetScanner.csproj
 
 ## 옮기지 않은 것
 
-- 게임 기능 코드(`Bms/`, `Patches/` 등)와 로직 테스트: 2편 타입을 확인한 뒤 기능 단위로 옮깁니다.
+- 게임 타입을 쓰는 기능 코드(`Patches/`, `HwaResourceManager`, `CustomRecordStore` 등): 2편 타입을 확인한 뒤 기능 단위로 옮깁니다. 순수 로직 중에도 게임에 묶인 부분은 뺐습니다: `ChartFingerprint.ForUid`(`HwaResourceManager` 의존), `CustomRecordStore.Serialization`(본체가 게임 의존인 partial), `CustomContentIds`(1편 UID 형식 `1999-N` 전제), `EmbeddedResource`(내장 리소스 필요), 오프셋 훅 테스트(`OffsetHookPatches` 의존).
 - `reset_progress.bat`: 1편 세이브·레지스트리 전용이라 2편 세이브 위치를 알기 전엔 위험합니다.
 - `_complexity_analyze.py`: 게임 탐색이 아니라 모드 코드 품질 도구입니다(1편 경로 고정).
 - 1편 `docs/`: 링크로만 참조합니다(문서 안 링크가 1편 소스 파일을 가리킴).
@@ -68,4 +71,10 @@ dotnet build "muse dash 2 test/muse dash 2 test.csproj"
 
 ```bash
 dotnet build "muse dash 2 test/muse dash 2 test.csproj" -p:GamePath="H:\muse dash hwa" -p:SkipDeploy=true
+```
+
+로직 테스트(게임 경로 불필요, 인자로 이름 일부를 주면 그 테스트만):
+
+```bash
+dotnet run --project "muse dash 2 test.LogicTests/muse dash 2 test.LogicTests.csproj"
 ```
