@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <RootNamespace>muse_dash_2_test.LogicTests</RootNamespace>
+    <AssemblyName>muse dash 2 test.LogicTests</AssemblyName>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+
+  <!--
+    1편 LogicTests를 옮긴 것입니다(2026-11-15).
+    모드 DLL은 Il2CppAssemblies를 참조해 게임 밖에서 로드할 수 없으므로, ProjectReference 대신
+    게임과 무관한 순수 로직 소스만 링크해서 함께 컴파일합니다(MelonLogger/ModLogger는 MelonLoggerStub.cs가 대신합니다).
+    게임 경로가 없어도 빌드·실행됩니다.
+  -->
+  <ItemGroup>
+    <Compile Include="..\muse dash 2 test\Bms\*.cs" Link="UnderTest\%(Filename)%(Extension)" />
+    <Compile Include="..\muse dash 2 test\Hwa\*.cs" Link="UnderTest\%(Filename)%(Extension)" />
+    <Compile Include="..\muse dash 2 test\Spine\*.cs" Link="UnderTest\%(Filename)%(Extension)" />
+    <!-- Core 폴더 전체는 MelonLoader를 쓰는 ModLogger 등이 섞여 있어 순수 로직만 골라 링크합니다. -->
+    <Compile Include="..\muse dash 2 test\Core\PlayRecordMerge.cs" Link="UnderTest\%(Filename)%(Extension)" />
+    <Compile Include="..\muse dash 2 test\Core\MusicDecimalText.cs" Link="UnderTest\%(Filename)%(Extension)" />
+    <Compile Include="..\muse dash 2 test\Core\SongAudioFiles.cs" Link="UnderTest\%(Filename)%(Extension)" />
+    <Compile Include="..\muse dash 2 test\Core\HiddenUnlockText.cs" Link="UnderTest\%(Filename)%(Extension)" />
+    <Compile Include="..\muse dash 2 test\Core\FileStampCache.cs" Link="UnderTest\%(Filename)%(Extension)" />
+    <Compile Include="..\muse dash 2 test\Core\AtomicFile.cs" Link="UnderTest\%(Filename)%(Extension)" />
+    <Compile Include="..\muse dash 2 test\Core\TextNormalizer.cs" Link="UnderTest\%(Filename)%(Extension)" />
+    <Compile Include="..\muse dash 2 test\Core\GameVersionCheck.cs" Link="UnderTest\%(Filename)%(Extension)" />
+    <Compile Include="..\muse dash 2 test\Core\ChartFingerprint.cs" Link="UnderTest\%(Filename)%(Extension)" />
+  </ItemGroup>
+</Project>
