@@ -23,7 +23,7 @@
 | `muse dash 2 test/` | MelonLoader 모드 뼈대. `MainMod`, `ModLogger`, 1편의 `PatchInstaller`·`PatchHealthCheck`(범용 부분만), 설정 파일 기반 호출 탐침 `CallProbe` |
 | `muse dash 2 test/Bms/`, `Hwa/`, `Spine/`, `Core/`(일부) | 1편에서 옮긴 게임 무관 순수 로직. BMS·WAV 파서, 난이도별 채보(`BmsChartSet`), 홀드·샌드백 짝 맞추기, info.txt 파서(`HwaManifestLoader`), 스킨 폴더 규칙, `TextNormalizer`, `PlayRecordMerge`, `ChartFingerprint`(파일 지문만), `GameVersionCheck`(검증 버전 미정 `0.0.0`) 등 |
 | `muse dash 2 test.LogicTests/` | 위 순수 로직의 테스트(1편에서 옮김, 170개). 게임 없이 실행됩니다 |
-| `docs/` | 출시 대비 체크리스트, 플레이북 |
+| `docs/` | 출시 대비 체크리스트, 플레이북, PC 모드 완성 뒤에 볼 안드로이드 이식 안내(`MD2_ANDROID_PORT_GUIDE.md`) |
 | `docs/md1-retarget/` | 1편 최신 v0.12.1+에서 뽑은 `hooks.tsv`(169건)·`api-refs.tsv`(428건)·`patch-files.tsv`(패치 클래스→1편 파일 126개) |
 | `reference/md1-6.7.0-signatures/` | 1편 6.7.0 시그니처 고정 스냅샷(로컬 전용, git 제외). 2편 덤프와 비교할 기준 |
 | `Decompiled/`, `scratch/` | 2편 덤프·임시 출력(로컬 전용, git 제외) |
