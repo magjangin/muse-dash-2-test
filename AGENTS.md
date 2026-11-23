@@ -6,14 +6,19 @@
 - 다른 게임 경로로 컴파일만 확인할 때는 `-p:SkipDeploy=true`를 줍니다(1편 `Mods`에 2편 DLL이 배포되는 것 방지).
 - **1편 설치본(`H:\muse dash hwa`)에서는 실행 시험을 하지 않습니다.** 2편 모드·탐침의 인게임 검증은 2편 출시 후 2편 사본에서 합니다(사용자 지시, 2026-10-27). 1편은 어셈블리를 읽기 전용으로 참조하는 데만 씁니다.
 - **PC 모드 우선 원칙**: 안드로이드 프리다 가젯(Frida Gadget) 이식은 **PC 모드(MelonLoader 기반)가 먼저 완성되고 인게임 검증까지 끝난 뒤에** 시도합니다. PC 환경에서 핵심 로직과 훅을 먼저 안정화하는 것이 절대 1순위입니다. 그때가 되면 [docs/MD2_ANDROID_PORT_GUIDE.md](docs/MD2_ANDROID_PORT_GUIDE.md)(1편 안드로이드에서 확인한 방법·Dead Ends 요약)부터 봅니다.
+- **오프라인 보존·DRM 우회 우선순위**: 작업용 독립 사본(`H:\muse dash 2 hwa`)의 Steam 독립 실행 및 오프라인 영구 보존 전환은 **Goldberg Emulator → Steamless → 로컬 Steam API Hooking** 순서로 적용합니다.
+  1. **Goldberg Emulator**: 사본의 `steam_api64.dll`(또는 `steam_api.dll`) 원본을 `.bak`으로 백업한 뒤 Goldberg DLL로 교체하고, `steam_settings/`(`steam_appid.txt`, 필요 시 `DLC.txt`·`offline.txt`)를 구성합니다.
+  2. **Steamless**: 사본 `.exe`에 SteamStub DRM이 걸려 독립 실행이 실패하거나 Steam 클라이언트를 강제 호출할 때만 언팩(`.unpacked.exe`로 교체, 원본 `.bak` 백업)합니다.
+  3. **로컬 Steam API Hooking**: 위 두 단계로 해결되지 않는 인게임 DLC·소유권 검증이 남아 있을 때만 모드 측 훅(`SteamApps.BIsDlcInstalled`, `SteamManager.DLCVerify` 등 1편 `OfflineCustomSandbox` 대응)으로 보완합니다.
+  - Steam 원본 설치본은 순정으로 유지하고, 위 처리는 **오프라인 작업용 독립 사본에만** 적용합니다. 온라인 랭킹·클라우드 동기화가 절대 발생하지 않도록 세이브 정화·서버 차단(체크리스트 6장 1번)과 함께 운용합니다.
 - **Git 작업**: 커밋·푸시·머지·브랜치 청소는 PC 완성 여부와 상관없이 **사용자가 요청하면 그때** 진행합니다. 요청 없이 먼저 하지는 않습니다(2026-11-15 변경. 이전에는 PC 완성 뒤로 미루는 규칙이었습니다).
 - 소스 파일이 600줄을 넘으면 기능을 더 붙이기 전에 작은 단위로 나눕니다(1편 규칙 승계).
 
 # 인수인계 (Handover)
 
-마지막 갱신: 2026-11-19 (출시 예정일 메모를 2027년 여름 목표로 갱신·체크리스트 8장 신유형 징후 확인 추가. 이전: 2026-11-15 게임 무관 순수 로직·로직 테스트 170개 선이식, 2026-11-09 1편 최신 v0.12.1+ 배포 DLL 기준 훅 169건 [정적 167건 + 동적 2건]·API 참조 428건·패치 클래스 126개 추출 및 동기화. 2편 미출시라 **검증은 전부 1편 6.7.0 기준**)
+마지막 갱신: 2026-11-23 (오프라인 보존·DRM 우회 우선순위 [Goldberg Emulator → Steamless → 로컬 Steam API Hooking]를 프로젝트 지침·체크리스트·플레이북에 반영. 이전: 2026-11-19 출시 예정일 2027년 여름 목표 갱신·체크리스트 8장 추가, 2026-11-15 순수 로직·테스트 170개 선이식, 2026-11-09 1편 v0.12.1+ 기준 훅 169건·API 428건 동기화. 2편 미출시라 **검증은 전부 1편 6.7.0 기준**)
 
-1. **게임 버전·고정**: 미확정. 출시일(2027년 여름 목표 — 지스타 2026 현장 후기 제보, 미확정. 기존 2026-12-25 비공식 보도는 Steam 상점 미표기 및 지스타 제보로 사실상 무산, 근거는 `docs/MD2_LAUNCH_CHECKLIST.md` 맨 위)에 Steam Build ID·Depot/Manifest ID를 기록하고, Steam 밖 독립 사본 `H:\muse dash 2 hwa`(예정)를 작업 기준으로 씁니다. 1편은 `.acf` 없는 독립 사본으로 버전을 고정했습니다.
+1. **게임 버전·고정**: 미확정. 출시일(2027년 여름 목표 — 지스타 2026 현장 후기 제보, 미확정. 기존 2026-12-25 비공식 보도는 Steam 상점 미표기 및 지스타 제보로 사실상 무산, 근거는 `docs/MD2_LAUNCH_CHECKLIST.md` 맨 위)에 Steam Build ID·Depot/Manifest ID를 기록하고, Steam 밖 독립 사본 `H:\muse dash 2 hwa`(예정)를 작업 기준으로 씁니다. 1편은 `.acf` 없는 독립 사본으로 버전을 고정했습니다. 독립 사본의 오프라인 실행·보존 전환은 **Goldberg Emulator → Steamless → 로컬 Steam API Hooking** 우선순위로 진행합니다.
 2. **런타임·디컴파일**: 미확정(1편은 Il2Cpp, Unity 2019.4.41f1, MelonLoader 0.7.3). Il2Cpp면 `SignatureDumper` → `Decompiled/`, 본문은 Cpp2IL ISIL. Mono면 `ilspycmd`. 1편 비교 기준은 `reference/md1-6.7.0-signatures/`(2026-10-27에 현재 덤퍼로 4개 어셈블리를 다시 뜬 것).
 3. **설계 의도**
    - 작업용 사본 경로 `H:\muse dash 2 hwa`는 1편 `H:\muse dash hwa` 관례를 따른 **추정**입니다. csproj `GamePath`, `SignatureDumper/Program.cs` 후보, `scripts/*.ps1` 기본값이 모두 이 경로를 씁니다. 바뀌면 세 곳을 같이 고칩니다.

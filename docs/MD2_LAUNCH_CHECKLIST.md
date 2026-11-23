@@ -32,6 +32,7 @@
 - [ ] **MelonLoader 최신 안정판 확인·내려받기.** 2편이 Unity 6 계열이면 0.7.3이 안 맞을 수 있습니다
       (In Falsus Demo에서 0.8.0 CI 베타가 Unity 6000.3의 `SceneManager.get_buildIndex()` 변경을 못 따라간 전례).
 - [ ] DepotDownloader 준비(다운그레이드·특정 매니페스트 고정용).
+- [ ] **오프라인 보존·DRM 우회 도구 준비.** Goldberg Steam Emulator(최신 `gbe_fork` 등 `steam_api64.dll` / `steam_api.dll` 배포본)와 Steamless(SteamStub 언패커, CLI 또는 GUI)를 미리 확보해 둡니다.
 - [ ] 디스크 여유 확인: 게임 원본 + 작업 사본 + Cpp2IL ISIL 출력(1편 약 380MB) + 덤프.
 - [x] .NET SDK 6 / 8 / 10 설치됨(2026-10-27 확인).
 
@@ -42,8 +43,12 @@
 - [ ] **Steam Build ID 기록.** `appmanifest_<AppID>.acf`의 `buildid`, `InstalledDepots`의 depot ID·`manifest` 값을 아래 표에 적습니다.
       출시 직후는 핫픽스가 잦아서, 이 숫자가 없으면 나중에 "어느 빌드에서 확인한 사실인지"를 잃습니다.
 - [ ] **작업용 독립 사본 만들기.** Steam 설치 폴더를 `H:\muse dash 2 hwa`로 통째로 복사합니다(1편 `H:\muse dash hwa`와 같은 방식, Steam 밖이라 자동 업데이트를 안 받음).
-      모드는 사본에만 깝니다. Steam 원본은 순정으로 두고 업데이트 비교용으로 씁니다.
-      사본을 Steam 밖에서 켜려면 `steam_appid.txt`(App ID 한 줄)가 필요할 수 있습니다.
+      모드와 오프라인 전환 처리는 사본에만 깝니다. Steam 원본은 순정으로 두고 업데이트 비교용으로 씁니다.
+- [ ] **오프라인 독립 실행·보존 전환 (우선순위: Goldberg Emulator → Steamless → 로컬 Steam API Hooking).**
+      사본을 Steam 클라이언트 없이 독립 실행·영구 보존할 수 있도록 아래 순서대로 확인합니다. 모든 원본 파일은 교체 전 `.bak`으로 백업합니다.
+      1. **Goldberg Emulator 적용**: 사본의 `steam_api64.dll`(또는 `steam_api.dll`, 보통 루트 또는 `<이름>_Data/Plugins/x86_64/`)을 `.bak`으로 백업 후 Goldberg DLL로 교체합니다. 같은 위치에 `steam_settings/` 폴더를 만들고 `steam_appid.txt`(App ID 한 줄), 필요 시 `offline.txt`·`DLC.txt`를 배치합니다. Steam 클라이언트를 끈 상태에서 실행되는지 확인합니다.
+      2. **Steamless 적용 (필요 시)**: Goldberg 적용 후에도 실행 파일(`.exe`)에 SteamStub DRM이 걸려 실행이 막히거나 Steam 클라이언트를 강제 호출할 때만 Steamless로 `.exe`를 언팩합니다(원본 `.exe`를 `.bak` 백업 후 `.unpacked.exe`로 교체).
+      3. **로컬 Steam API Hooking (보완 단계)**: 위 두 단계 이후에도 인게임 DLC·소유권 검증이 남아 있는 경우에만 6장 1번 안전판(세이브 정화·서버 차단)과 함께 모드 측 로컬 훅(`SteamApps.BIsDlcInstalled`, `SteamManager.DLCVerify` 등 1편 `OfflineCustomSandbox` 대응)으로 보완합니다.
 - [ ] (선택) Steam 원본도 고정하려면 `.acf` 자동 업데이트 차단. 핫픽스를 바로 받아 비교하고 싶다면 원본은 열어 두는 편이 낫습니다.
 - [ ] **경로 이름 확정.** 실제 설치 폴더·exe·`_Data` 폴더 이름이 추정(`Muse Dash 2`, `H:\muse dash 2 hwa`)과 다르면 아래 세 곳을 고칩니다.
   - `muse dash 2 test/muse dash 2 test.csproj`의 `GamePath`
@@ -57,6 +62,7 @@
 - [ ] **Unity 버전**: `UnityPlayer.dll` 파일 버전.
 - [ ] **안티치트·서버 검증 범위.** EasyAntiCheat/BattlEye 폴더 유무, 랭킹·기록이 서버 검증형인지.
       진짜 경계선은 백엔드가 아니라 "게임 상태가 로컬에만 있는가"입니다.
+- [ ] **Steam DRM·DLC 검증 구조.** `steam_api64.dll` 위치, `.exe`의 SteamStub 패킹 여부(Steamless 검사), 4장 덤프 후 인게임 `SteamAPI` / `BIsDlcInstalled` / `DLCVerify` 계열 검증 메서드 유무를 확인해 아래 실측 기록에 적습니다.
 - [ ] **세이브 위치** 찾기(1편은 레지스트리 + 파일). 모드를 깔기 **전에** 순정 세이브를 백업합니다.
 
 ## 4. MelonLoader 설치와 덤프 (20~30분)
@@ -117,6 +123,7 @@
 1. [ ] **안전판 먼저 — 세이브 정화와 서버 전송 차단.** 커스텀 곡을 **한 번이라도 플레이하기 전에** 합니다.
        가짜 UID 기록이 순정 세이브에 들어가면 되돌리기 어렵고, 기록이 랭킹 서버로 올라가면 다른 플레이어에게 영향이 갑니다.
        1편 대응: `DataManager.Save()` Prefix/Postfix, `StandardNetworkRequest.SendRequest()`, `PnlRank.*`.
+       (오프라인 보존 보완) Goldberg·Steamless 적용 후에도 인게임 DLC/소유권 검증이 남아 있으면 1편 `OfflineCustomSandbox`(`SteamApps.BIsDlcInstalled`, `SteamManager.DLCVerify`) 패턴을 함께 확인·이식합니다. 반드시 온라인 랭킹·클라우드 차단 상태에서 테스트합니다.
 2. [ ] **곡 DB의 주인** 찾기(1편 `GlobalDataBase.dbMusicTag.m_AllMusicInfo`, 조회 `GetMusicInfoFromAll(uid)`).
 3. [ ] **차트 주입 지점**(1편 `DBStageInfo.SetRuntimeMusicData(List)` Postfix)과 **난이도별 차트 에셋 보정**(`StageBattleComponent.GetMusicDataFromStageInfo` Prefix). 1편 BMS 파서·info.txt 파서·`TextNormalizer` 등 게임 무관 로직과 로직 테스트 170개는 **2026-11-15에 이미 옮겼습니다**(`Bms/`, `Hwa/`, `Spine/`, `Core/` 일부, `muse dash 2 test.LogicTests/`). 여기서는 이 로직을 2편 훅에 잇는 일만 남습니다.
 4. [ ] **가상 곡/앨범 등록 + 조회 우회**(임무 B·C, 데이터 계층 🟡). 여기까지 되면 커스텀 곡이 돕니다.
@@ -253,6 +260,7 @@ AI 요약표를 그대로 믿지 않고 원문과 맞춰 본 결과입니다. �
 | `Game Developer` / `Game Name` | | |
 | 게임 어셈블리 목록 | | |
 | 안티치트 / 서버 검증 범위 | | |
+| Steam DRM / 오프라인 전환 (Goldberg / Steamless / 훅) | | |
 | 세이브 위치 | | |
 | 1편 대비 사라진 / 새 타입 수 | | |
 | 재타깃팅: 훅 그대로 / 전체, API 문제 수 | | |

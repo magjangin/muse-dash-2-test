@@ -68,6 +68,8 @@
 | MelonLoader가 안 켜짐(Il2Cpp) | 최신 안정판 → 최신 nightly 순서. Unity 6 계열이면 0.7.3은 처음부터 건너뜀 | In Falsus Demo 전례(0.8.0 CI가 Unity 6000.3 API 변경을 못 따라감) |
 | MelonLoader가 안 켜짐(Mono, `TypeLoadException`/`MissingMethodException`) | 스트리핑된 BCL → 같은 Unity LTS 줄 도너에서 이식 | 전역 메모리 "스트리핑된 Mono 게임 크래시" |
 | 안티치트 있음 / 기록이 서버 검증형 | 오프라인 전용 사본에서만 작업, 서버 전송 차단을 기능 1순위로 | 다른 플레이어·계정에 영향이 가는 유일한 경로 |
+| 독립 사본이 Steam 없이 안 켜짐 / Steam 클라이언트 강제 실행 | **Goldberg Emulator → Steamless → 로컬 Steam API Hooking** 순으로 적용(원본은 `.bak` 백업, 순정 Steam 설치본은 수정 금지) | 1차는 `steam_api64.dll` 교체 + `steam_settings/`만으로 해결되는 경우가 많고, SteamStub 패킹이 있을 때만 Steamless 언팩 필요 |
+| Goldberg·Steamless 이후에도 인게임 DLC·소유권 검증 루프/잠금 | 1편 `OfflineCustomSandbox` 패턴(`SteamApps.BIsDlcInstalled`, `SteamManager.DLCVerify`)을 덤프에서 찾아 모드 로컬 훅으로 보완 | Steam API 레벨 에뮬레이션만으로 풀리지 않는 게임 내부 자체 검증 플래그 대응. 반드시 온라인 랭킹·클라우드 차단 상태에서 테스트 |
 | 패치 하나가 게임을 멈춤 | 그 클래스만 빼고 다시 켬. `PatchInstaller` 로그에 남은 이름부터 | 1편: JIT 실패 Prefix는 원본까지 막음 |
 | 버전 변경으로 패치 일부 멤버 누락 | `PatchInstaller` 다중 패치 부분 적용 활용. 패치 본문에서 게임 멤버 호출은 헬퍼로 분리 후 `try/catch` (Prefix catch는 반드시 `return true`) | `PatchInstaller`는 패치 자체만 사전 검증하며 내부 헬퍼/람다 JIT는 못 잡음 |
 | 숙주에 없는 난이도로 플레이 시 NRE/멈춤 | `StageBattleComponent.GetMusicDataFromStageInfo`에서 숙주 차트 에셋명만 존재하는 난이도로 교체 | 1편: 0-4 Master 시작 시 차트 에셋 없어 보라색 화면 정지 |
@@ -156,6 +158,7 @@ grep -E "PatchInstaller|PatchHealth|\[Scene\]|trampoline|Exception|Error" "H:/mu
 
 | 기능 (1편 대상) | 확인 신호 | 흔한 실패 → 1편에서 찾은 원인 |
 |---|---|---|
+| 오프라인 보존·DRM 우회 (Goldberg / Steamless / 로컬 Steam API 훅) | Steam 클라이언트 완전 종료 상태에서 사본 독립 실행 → 타이틀·메뉴 진입·로컬 플레이 정상, 온라인 랭킹·클라우드 요청 미발생 | `steam_api64.dll` 경로 오인(`Plugins/x86_64/` 누락), `steam_appid.txt` 누락, SteamStub 패킹 미언팩, 인게임 자체 DLC 검증 플래그 잔존 |
 | 세이브 정화 (`DataManager.Save`) | 커스텀 곡 플레이 후 세이브 파일에 가짜 UID(1편 `1999-`)가 **없음**. 플레이 전후 세이브를 파일 비교 | 저장 경로가 둘(파일 + 레지스트리)이라 한쪽만 막음 |
 | 서버 전송 차단 (`StandardNetworkRequest.SendRequest`, `PnlRank.*`) | 커스텀 곡 결과 화면에서 랭킹 요청 로그가 차단 메시지로 끝남 | — |
 | 곡 DB 주입 (`dbMusicTag.m_AllMusicInfo`) | `GetMusicInfoFromAll("<가상 UID>")`가 null이 아님(1편 `[대성공]` 로그) | 조회 함수가 UID가 아니라 인덱스로 물음(`…ByIndex`) |
